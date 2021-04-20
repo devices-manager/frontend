@@ -2,6 +2,10 @@ version: 2.1
 
 jobs:
     build:
+        environment:
+            IMAGE_NAME: backend
+            DOCKER_LOGIN: csandre
+            TAG: latest
         working_directory: ~/repo
         docker:
             - image: circleci/node:12-browsers
