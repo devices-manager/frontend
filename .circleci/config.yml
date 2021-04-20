@@ -3,7 +3,7 @@ version: 2.1
 jobs:
     build:
         environment:
-            IMAGE_NAME: backend
+            IMAGE_NAME: frontend
             DOCKER_LOGIN: csandre
             TAG: latest
         working_directory: ~/repo
