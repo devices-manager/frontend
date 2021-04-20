@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCommonModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
@@ -32,16 +31,12 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatInputModule,
-    MatTableModule,
     MatCheckboxModule,
     MatIconModule,
     MatPaginatorModule,
-    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule,
     MatButtonModule,
-    MatCommonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
