@@ -1,5 +1,5 @@
 <div class="row align-items-center justify-content-center" style="height: 100%;">
-    <div class="col-md-12" style="height: 0%;"> 
+    <div class="col-md-12"> 
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
@@ -10,8 +10,11 @@
                                 <div *ngIf="added && angForm.pristine && !angForm.touched" class="alert alert-success" role="alert">
                                     Operation successfully performed!
                                 </div>
-                                <div *ngIf="error!==null && angForm.pristine && !angForm.touched" class="alert alert-danger" role="alert">
-                                    Error on operation: {{error}}.
+                                <div *ngIf="error!==null" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <span>Error on operation: {{error}}.</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Color" type="text" autofocus formControlName="deviceColor" #deviceColor>
@@ -56,7 +59,7 @@
         </div>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-8">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -95,7 +98,7 @@
                         </th>   
                         <td mat-cell *matCellDef="let element" style="direction: rtl"> 
                             <div class="row">
-                                <button (click)="deleteDevice(element.color, element.deviceId, element.partNumber, element.categoryId)" mat-icon-button><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button> 
+                                <button (click)="deleteDevice(element.color, element.id, element.partNumber, element.categoryId)" mat-icon-button><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button> 
                             </div>
                         </td> 
                     </ng-container>
@@ -107,7 +110,7 @@
             <div class="col-md-12">
                 <div class="row" align="right">
                     <div class="col-md-12" align="right">
-                        <mat-paginator [pageSizeOptions]="[10]" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+                        <mat-paginator [pageSizeOptions]="[5]" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
                     </div>
                 </div>
             </div>

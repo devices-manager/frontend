@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  public async addBrand(categoryName: string): Promise<boolean> {
+  public async addCategory(categoryName: string): Promise<boolean> {
     try {
       const categoryToAdd: Category = {
         name: categoryName
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
         })
         .catch(error => {
           console.log(error);
-          this.error = error.error.details;
+          this.error = error.error.error.name;
           this.added = false;
           return;
         });
@@ -108,8 +108,7 @@ export class HomeComponent implements OnInit {
           this.table.renderRows();
         })
         .catch(error => {
-          console.log(error);
-          this.error = error.error.details;
+          this.error = error.error.error.name;
           this.added = false;
           return;
         });

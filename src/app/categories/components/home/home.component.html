@@ -10,8 +10,11 @@
                                 <div *ngIf="added && angForm.pristine && !angForm.touched" class="alert alert-success" role="alert">
                                     Operation successfully performed!
                                 </div>
-                                <div *ngIf="error!==null && angForm.pristine && !angForm.touched" class="alert alert-danger" role="alert">
-                                    Error on operation: {{error}}.
+                                <div *ngIf="error!==null" class="alert alert-danger alert-dismissible" role="alert">
+                                    <span>Error on operation: {{error}}.</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Category name" type="text" autofocus formControlName="categoryName" #categoryName>
@@ -29,14 +32,14 @@
                     </div>
                     <div class="col-md-12 div-spacing" align="right">
                         <button class="btn-custom btn-custom-secondary btn-spacing" (click)="cancel()">Cancel</button>
-                        <button (click)="addBrand(categoryName.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn-custom btn-custom-primary" >Save</button>
+                        <button (click)="addCategory(categoryName.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn-custom btn-custom-primary" >Save</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-8">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">

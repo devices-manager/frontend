@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   public error: any = null;
   public added = false;
   public categories: Category[] = [];
-  public selectedCategory!: Category;
+  public selectedCategory!: any;
 
 
   @ViewChild(MatTable, {static: false}) table!: MatTable<any>;
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
             color: res.color,
             categoryId: res.categoryId,
             partNumber: res.partNumber,
-            Category: res.Category,
+            Category: category,
             createdAt: res.createdAt
           };
           this.dataSource.data.unshift(device);
@@ -75,11 +75,11 @@ export class HomeComponent implements OnInit {
           this.table.renderRows();
           this.added = true;
           this.error = null;
+          this.selectedCategory = null;
           this.angForm.reset();
         })
         .catch(error => {
-          console.log(error);
-          this.error = error.error.details;
+          this.error = error.error.error.name;
           this.added = false;
           return;
         });
@@ -93,6 +93,7 @@ export class HomeComponent implements OnInit {
   public cancel(): boolean {
     try {
       this.selectedRow = null;
+      this.selectedCategory = null;
       this.added = false;
       this.angForm.reset();
       return true;
@@ -130,8 +131,7 @@ export class HomeComponent implements OnInit {
           this.table.renderRows();
         })
         .catch(error => {
-          console.log(error);
-          this.error = error.error.details;
+          this.error = error.error.error.name;
           this.added = false;
           return;
         });
