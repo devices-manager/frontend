@@ -3,7 +3,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CategoriesService } from '../../services/categories.service'
+import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../interfaces/category';
 
 
@@ -18,12 +18,12 @@ export class HomeComponent implements OnInit {
   public selectedRow: any = null;
   public angForm: FormGroup;
   public error: any = null;
-  public added: boolean = false;
+  public added = false;
 
   constructor(
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder,
-  ) { 
+  ) {
     this.angForm = this.formBuilder.group({
       categoryName: ['', [
         Validators.required,
@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
     try {
       const category: Category = {
         name: categoryName
-      }
-      await this.categoriesService.addCategory(category)
+      };
+      this.categoriesService.addCategory(category)
         .then(res => {
           console.log(`Category Service: ${res}`);
           this.added = true;
@@ -55,14 +55,14 @@ export class HomeComponent implements OnInit {
       return false;
     }
   }
-  
+
   public cancel(): boolean {
     try {
       this.selectedRow = null;
       this.added = false;
       this.angForm.reset();
-      return true
-    } catch(_) {
+      return true;
+    } catch (_) {
       return false;
     }
   }

@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
   imports: [
     CommonModule,
     CategoriesRoutingModule,
-    MatTableModule, 
+    MatTableModule,
     MatCardModule,
     MatFormFieldModule,
     FormsModule,
