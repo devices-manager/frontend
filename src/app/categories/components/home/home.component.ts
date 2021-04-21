@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
           this.error = null;
         })
         .catch(error => {
+          console.log(error);
           this.error = error.error.details;
           this.added = false;
           return;
