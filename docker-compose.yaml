@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  frontend:
+    container_name: frontend
+    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - ${FRONTEND_PORT_HOST}:${FRONTEND_PORT_DOCKER}
+    depends_on:
+      - "backend"
+    networks:
+      - production-network
+
+  backend:
+    image: backend/dev:latest    
+    env_file: .env
+    container_name: backend
+    ports:
+      - ${BACKEND_PORT_HOST}:${BACKEND_PORT_DOCKER}
+    restart: on-failure
+    depends_on:
+      - "database"
+    networks:
+      - production-network
+
+  database:
+    image: mysql
+    restart: always
+    container_name: database
+    env_file: .env
+    ports:
+      - ${MYSQL_LOCAL_PORT}:${MYSQL_DOCKER_PORT}
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - production-network
+
+volumes:
+  db:
+
+networks:
+  production-network:
+    driver: bridge

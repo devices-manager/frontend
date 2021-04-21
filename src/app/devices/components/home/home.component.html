@@ -1,1 +1,116 @@
-<p>home works!</p>
+<div class="row align-items-center justify-content-center" style="height: 100%;">
+    <div class="col-md-12" style="height: 0%;"> 
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="row" align="left">
+                    <div class="col-md-12">
+                        <mat-card class="example-card">
+                            <form class="example-form" [formGroup]="angForm" novalidate>
+                                <div *ngIf="added && angForm.pristine && !angForm.touched" class="alert alert-success" role="alert">
+                                    Operation successfully performed!
+                                </div>
+                                <div *ngIf="error!==null && angForm.pristine && !angForm.touched" class="alert alert-danger" role="alert">
+                                    Error on operation: {{error}}.
+                                </div>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Color" type="text" autofocus formControlName="deviceColor" #deviceColor>
+                                    <mat-error *ngIf="(angForm.controls['deviceColor'].invalid) && (angForm.controls['deviceColor'].dirty ) && (angForm.controls['deviceColor'].errors?.required)">
+                                        Device color is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="(angForm.controls['deviceColor'].invalid) && (angForm.controls['deviceColor'].dirty ) && (angForm.controls['deviceColor'].invalid && ! angForm.controls['deviceColor'].errors?.required)">
+                                        Device color is invalid.
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Part Number" type="number" autofocus formControlName="partNumber" #partNumber min="0">
+                                    <mat-error *ngIf="(angForm.controls['partNumber'].invalid) && (angForm.controls['partNumber'].dirty ) && (angForm.controls['partNumber'].errors?.required)">
+                                        Part Number is <strong>required</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="(angForm.controls['partNumber'].invalid) && (angForm.controls['partNumber'].dirty ) && (angForm.controls['partNumber'].invalid && ! angForm.controls['partNumber'].errors?.required)">
+                                        Part Number is invalid.
+                                    </mat-error>
+                                </mat-form-field> 
+                            </form>  
+                        </mat-card>
+                    </div>
+                    <div class="col-md-12 div-space">
+                        <mat-card class="example-card">
+                            <p class="card-title">Categories</p>    
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Available categories</mat-label>
+                                <mat-select [(ngModel)]="selectedCategory" ngDefaultControl [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let category of categories" [value]="category">
+                                        {{category.name}} 
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-card>
+                    </div>
+                    <div class="col-md-12 div-spacing" align="right">
+                        <button class="btn-custom btn-custom-secondary btn-spacing" (click)="cancel()">Cancel</button>
+                        <button (click)="addDevice(deviceColor.value, partNumber.value, selectedCategory)" [disabled]="angForm.pristine || angForm.invalid" class="btn-custom btn-custom-primary" >Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                    <mat-form-field class="full-width">
+                        <mat-icon class="material-icons color_default" fontSet="material-icons-outlined" matSuffix>search</mat-icon>
+                        <input matInput (keyup)="applyFilter(searchText.value)" placeholder="Search" #searchText>
+                    </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table #table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
+                    <ng-container matColumnDef="color">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+                        <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="partNumber">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Part Number </th>
+                        <td mat-cell *matCellDef="let element"> {{element.partNumber}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Category.name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Created At </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef style="direction: rtl">
+                        </th>   
+                        <td mat-cell *matCellDef="let element" style="direction: rtl"> 
+                            <div class="row">
+                                <button (click)="deleteDevice(element.color, element.deviceId, element.partNumber, element.categoryId)" mat-icon-button><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button> 
+                            </div>
+                        </td> 
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [style.background]="row === selectedRow ? '#CFDCF9': '#FAFAFA'">
+                </table>
+            </div>
+            <div class="col-md-12">
+                <div class="row" align="right">
+                    <div class="col-md-12" align="right">
+                        <mat-paginator [pageSizeOptions]="[10]" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

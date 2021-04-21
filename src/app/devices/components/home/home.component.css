@@ -1,0 +1,117 @@
+table {
+    width: 100%;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+}
+
+.background-table{
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 100%;
+}
+
+.card-title{
+    text-align: left;
+    font-family: Open Sans, Regular;
+    font-size: 24px;
+    letter-spacing: 0;
+    color: #393939;
+    opacity: 1;
+}
+
+.paginator-feedback{
+    font-family: Open Sans, Regular;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-overflow: clip;
+    color: #343A40;
+    margin-top: 15px;
+    opacity: 1;
+}
+
+.material-icons.color_default { color: #00000099; }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 70%;
+}
+
+.example-card {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+}
+
+.btn-spacing{
+    margin-right: 16px;
+}
+
+.div-spacing{
+    margin-top: 30px;
+}
+
+.div-space{
+    margin-top: 15px;
+}
+
+.btn-custom{
+    width: 122px;
+    height: 44px;
+    text-align: center;
+    letter-spacing: 0;
+    text-align: center;
+    font-family: Open Sans, Semibold;
+    font-size: 14px;
+    opacity: 1;
+}
+
+.btn-custom-primary{
+    background-color: #0061A8;
+    border: 0px;
+    color: #FFFFFF;
+}
+
+.btn-custom-secondary{
+    border: 1px solid #C5C5C6;
+    background-color: #ffffff;
+    color: #49494C;
+}
+
+.mat-icon-button{
+    
+}
+
+::ng-deep .mat-paginator {
+     background: #FAFAFA 0% 0% no-repeat padding-box;
+}
+
+::ng-deep .mat-header-cell {
+    text-align: left;
+    font-size: 18px;
+    font-family: Open Sans, Semibold;
+    letter-spacing: 0;
+    color: #393939;
+    opacity: 1;
+    border-bottom: 1px solid #0061A8 !important;
+}
+
+::ng-deep .mat-cell {
+    text-align: left;
+    font-size: 16px;
+    font-family: Open Sans, Semibold;
+    letter-spacing: 0;
+    color: #00000099;
+    opacity: 1;
+}
+
+.filter-button{
+    display:flex; 
+    justify-content:flex-end;
+    width:100%;
+    padding:0;    
+}
+

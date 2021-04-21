@@ -22,7 +22,7 @@ export class CategoriesService {
     return this.http.post<Category>(this.baseURL, obj).toPromise();
   }
 
-  public getCategories(): Promise<Category> {
+  public getCategories(): Promise<any> {
     return this.http.get<Category>(this.baseURL).toPromise();
   }
 

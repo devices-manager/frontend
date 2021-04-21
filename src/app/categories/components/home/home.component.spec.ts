@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HomeComponent } from './home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -10,7 +11,12 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [ HttpClientTestingModule, ReactiveFormsModule ]
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatPaginatorModule
+      ]
     })
     .compileComponents();
   });
@@ -21,7 +27,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create category home', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center justify-content-center" style="height: 100%;">
+<div class="row align-items-center justify-content-center" style="height: 100%;">
     <div class="col-md-12"> 
         <div class="row">
             <div class="col-md-2"></div>
@@ -35,48 +35,52 @@
             </div>
         </div>
     </div>
-    <!-- <div class="col-md-5">
-            <div class="row background-table">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-3">
-                          <mat-form-field class="full-width">
-                              <mat-icon class="material-icons color_default" fontSet="material-icons-outlined" matSuffix>search</mat-icon>
-                              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
-                          </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
-                        <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
-                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                        </ng-container>
-    
-                        <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef style="direction: rtl">
-                            </th>   
-                            <td mat-cell *matCellDef="let element" style="direction: rtl"> 
-                                <div class="row">
-                                    <button (click)="prepareEdition(element)" mat-icon-button><mat-icon fontSet="material-icons-outlined">edit</mat-icon></button> 
-                                    <button (click)="deleteBrand(element.id,element.name)" mat-icon-button><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button> 
-                                </div>
-                            </td> 
-                        </ng-container>
-    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [style.background]="row === selectedRow ? '#CFDCF9': '#FAFAFA'">
-                    </table>
-                </div>
-                <div class="col-md-12">
-                    <div class="row" align="right">
-                        <ng-container *ngIf="dataSource.filteredData.length; then isFiltered; else noFiltered"> </ng-container>
-                        <div class="col-md-6" align="right">
-                            <mat-paginator [pageSizeOptions]="[10]" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
-                        </div>
+
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                    <mat-form-field class="full-width">
+                        <mat-icon class="material-icons color_default" fontSet="material-icons-outlined" matSuffix>search</mat-icon>
+                        <input matInput (keyup)="applyFilter(searchText.value)" placeholder="Search" #searchText>
+                    </mat-form-field>
                     </div>
                 </div>
             </div>
-        </div> -->
+            <div class="col-md-12">
+                <table #table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Created At </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef style="direction: rtl">
+                        </th>   
+                        <td mat-cell *matCellDef="let element" style="direction: rtl"> 
+                            <div class="row">
+                                <button (click)="deleteCategory(element.name,element.id)" mat-icon-button><mat-icon fontSet="material-icons-outlined">delete</mat-icon></button> 
+                            </div>
+                        </td> 
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [style.background]="row === selectedRow ? '#CFDCF9': '#FAFAFA'">
+                </table>
+            </div>
+            <div class="col-md-12">
+                <div class="row" align="right">
+                    <div class="col-md-12" align="right">
+                        <mat-paginator [pageSizeOptions]="[5]" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
