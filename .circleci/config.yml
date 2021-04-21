@@ -38,6 +38,9 @@ jobs:
             - run:
                 name: Testing
                 command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+            - run:
+                name: Clean
+                command: npm cache clean --force
             #Deploy to docker hub
             - setup_remote_docker
             - run:
