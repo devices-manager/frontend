@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  hostAndPort: 'http://localhost:3000',
+  hostAndPort: 'http://ec2-3-129-6-166.us-east-2.compute.amazonaws.com:3000',
 };
 
 /*
