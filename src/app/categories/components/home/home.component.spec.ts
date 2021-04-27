@@ -12,16 +12,16 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     const spy = jasmine.createSpyObj(
-      'CategoriesService', 
+      'CategoriesService',
       ['getCategories', 'addCategory']
     );
     spy.getCategories.and.returnValue(
       Promise.resolve([
         {
-          "id":5,
-          "name":"test",
-          "createdAt":"2021-04-27T12:46:26.000Z",
-          "updatedAt":"2021-04-27T12:46:26.000Z"
+          id: 5,
+          name: 'test',
+          createdAt: '2021-04-27T12:46:26.000Z',
+          updatedAt: '2021-04-27T12:46:26.000Z'
         }
       ])
     );
@@ -38,10 +38,10 @@ describe('HomeComponent', () => {
     spy.addCategory.and.returnValue(
       Promise.resolve([
         {
-          "id":5,
-          "name":"test",
-          "createdAt":"2021-04-27T12:46:26.000Z",
-          "updatedAt":"2021-04-27T12:46:26.000Z"
+          id: 5,
+          name: 'test',
+          createdAt: '2021-04-27T12:46:26.000Z',
+          updatedAt: '2021-04-27T12:46:26.000Z'
         }
       ])
     );
