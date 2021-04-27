@@ -22,8 +22,8 @@ export class CategoriesService {
     return this.http.post<Category>(this.baseURL, obj).toPromise();
   }
 
-  public getCategories(): Promise<any> {
-    return this.http.get<Category>(this.baseURL).toPromise();
+  public getCategories(): Promise<Category[]> {
+    return this.http.get<Category[]>(this.baseURL).toPromise();
   }
 
   public deleteCategory(category: Category): Promise<Category> {
